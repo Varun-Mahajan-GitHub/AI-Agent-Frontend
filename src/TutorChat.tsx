@@ -1,6 +1,6 @@
-import React, { useState } from "react";
 import axios from "axios";
 import styled from "styled-components";
+import { useState } from "react";
 
 const ChatContainer = styled.div`
   max-width: 600px;
@@ -12,8 +12,8 @@ const ChatContainer = styled.div`
 `;
 
 const Message = styled.div<{ isUser: boolean }>`
-  background: ${(props) => (props.$isUser ? "#007bff" : "#e9ecef")};
-  color: ${(props) => (props.$isUser ? "#fff" : "#333")};
+  background: ${(props) => (props.isUser ? "#007bff" : "#e9ecef")};
+  color: ${(props) => (props.isUser ? "#fff" : "#333")};
   padding: 10px;
   border-radius: 8px;
   max-width: 80%;
@@ -87,7 +87,7 @@ const TutorChat = () => {
       <h2>AI Study Tutor</h2>
       <div style={{ display: "flex", flexDirection: "column" }}>
         {chatHistory.map((msg, index) => (
-          <Message key={index} $isUser={msg.isUser}>
+          <Message key={index} isUser={msg.isUser}>
             {msg.text}
           </Message>
         ))}
